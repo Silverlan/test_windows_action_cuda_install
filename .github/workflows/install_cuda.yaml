@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - run: Set-MpPreference -DisableRealtimeMonitoring $true
+        shell: powershell
       - name: Install cuda-toolkit
         uses: Jimver/cuda-toolkit@v0.2.16
         with:
