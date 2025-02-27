@@ -1,0 +1,17 @@
+name: Install CUDA Windows
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+jobs:
+  install-cuda:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Install cuda-toolkit
+        uses: Jimver/cuda-toolkit@v0.2.16
+        with:
+          cuda: '12.5.0'
