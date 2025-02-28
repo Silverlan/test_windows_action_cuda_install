@@ -1,20 +1,25 @@
-name: Install CUDA Windows
+name: Setup CUDA on Windows
 
 on:
   push:
     branches:
-      - 'main'
-      - 'master'
-jobs:
-  install-cuda:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      - run: Set-MpPreference -DisableRealtimeMonitoring $true
-        shell: powershell
-      - name: Install cuda-toolkit
-        uses: Silverlan/cuda-toolkit@master
-        with:
-          cuda: '12.5.0'
+      - main
+  pull_request:
 
+jobs:
+  setup-cuda:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clone setup_cuda repository
+        run: git clone https://github.com/Silverlan/setup_cuda.git
+
+      - name: Run setup_cuda.ps1 with CUDA_VERSION_FULL
+        shell: pwsh
+        run: |
+          $env:INPUT_CUDA_VERSION = "v12.5.0"
+          ./setup_cuda/setup_cuda.ps1
+          
