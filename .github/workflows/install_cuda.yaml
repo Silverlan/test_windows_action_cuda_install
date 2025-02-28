@@ -20,6 +20,6 @@ jobs:
       - name: Setup CUDA Toolkit
         id: cuda-toolkit
         shell: pwsh
-        run: scripts/setup_cuda.ps1
+        run: setup_cuda/setup_cuda.ps1
         env:
             INPUT_CUDA_VERSION: "v12.5.0"
