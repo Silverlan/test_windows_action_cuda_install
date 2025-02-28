@@ -17,3 +17,4 @@ jobs:
         uses: Silverlan/cuda-toolkit@master
         with:
           cuda: '12.5.0'
+
