@@ -14,6 +14,6 @@ jobs:
       - run: Set-MpPreference -DisableRealtimeMonitoring $true
         shell: powershell
       - name: Install cuda-toolkit
-        uses: Jimver/cuda-toolkit@v0.2.16
+        uses: Silverlan/cuda-toolkit@master
         with:
           cuda: '12.5.0'
